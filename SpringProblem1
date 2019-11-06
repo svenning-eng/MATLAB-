@@ -1,1 +1,34 @@
+dt = 0.25;                                %Change in time step. 
+x(1) = 0;                                 %Initial Condition for x(1);
+x(2) = 0.1;                               %Initial Condiction for x(2);
+m = 2;                                    %Mass 
+ks = 10;                                  %Spring Constant 
+d = 1;                                    %Damping coefficient 
+x_dot(1) = (-ks/m)*x(2)-d/m*x(1);         %Not really necessary
+x_dot(2) = 0;                             %          
+t0 = 0;                                   %Initializes t0=0
+t(1) = t0                                 %
+sum = 0;                                  %Not really necessary 
+x = spring_function(x,x_dot,dt)           %Not really necessary but this call the function  
+y(1,1) = x(1);                            %If you don't do the not really necessary parts, you have to find a way 
+y(2,1) = x(2);                            %                      
+n = 1000;                                 %                  
+w(1)=y(2,1)                               %This is used to plost the first element of second row of y, 
+for k = 1:n                               %
+    t(k+1) = t0+dt                        %This line is the equivalent to the sum function. 
+    x_dot(1) = (-ks/m)*x(2)-d/m*x(1);     %
+    t0 =t(k);                             %
+    
+    %Equations of Motion. Or State Space Model. 
+    x_dot(2) = x(1)                       %
+    x = spring_function(x,x_dot,dt)       %Function that integrates 
+    y(1,k+1) = x(1)                       %
+    y(2,k+1) = x(2)                       %
+    w(k+1) = y(2,k+1)                     %
+end
+plot(w)
+function out = spring_function(x,x_dot,dt)%
+out = dt*x_dot+x                          %This function differientiates and gives you and array output. 
+end
+
 
