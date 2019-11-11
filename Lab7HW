@@ -1,0 +1,58 @@
+%%
+%Problem 1: 
+
+x = 5;
+y = quad(x)
+
+%%
+%Problem 2 modify quad so x can be a vector 
+
+x = 1:10;
+y = quad(x)
+
+
+%Just add dot operator because of vector to function 
+%%
+%Problem 3
+
+for j = 1:11
+    Y(j)= j^2
+end 
+
+plot(Y)
+
+%%
+%Problem 4
+
+X= 1;
+while (X<1048576)
+    X = X*2
+end 
+
+%%
+%Problem 5
+
+A = zeros(10)     %Fills "A" with a 10X10 of zeros 
+
+for j = 1:10     %sets row one
+    for k = 1:10
+        A(j,k) = j+k - 1
+    end 
+end 
+
+%%
+%Problem 6: Calculate the value of the integral of y = 2*e^2 for x =
+%0:0.5sec. Show each computed value of the integral. 
+clearvars
+i = 1
+z(1) = 0
+dt = 0.1
+for i = 1:1:5
+    z(i+1) = z(i) + dt*2*exp(2*i*dt)
+end 
+plot(z)
+
+%% 
+
+function out = quad(X)
+    out = X.
